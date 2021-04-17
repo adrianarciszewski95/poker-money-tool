@@ -1,0 +1,164 @@
+#:kivy 2.0.0
+
+<Token>:
+
+<Poker>:
+    black_token: black
+    orange_token: orange
+    green_token: green
+    yellow_token: yellow
+    blue_token: blue
+    money_label: money
+    Token:
+        id: black
+        Image:
+            source: 'images/black.png'
+            size: self.texture_size
+            pos_hint: {"center_x": .2, "center_y": .8}
+        MDLabel:
+            text: str(root.black_token.weight)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .2, "center_y": .8}
+        MDIconButton:
+            icon: "minus"
+            pos_hint: {"center_x": .15, "center_y": .62}
+            on_press: root.count_minus_one(root.black_token)
+        MDLabel:
+            text: str(root.black_token.count)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .2, "center_y": .62}
+        MDIconButton:
+            icon: "plus"
+            pos_hint: {"center_x": .25, "center_y": .62}
+            on_press: root.count_plus_one(root.black_token)
+    Token:
+        id: orange
+        Image:
+            source: 'images/orange.png'
+            size: self.texture_size
+            pos_hint: {"center_x": .5, "center_y": .8}
+        MDLabel:
+            text: str(root.orange_token.weight)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .5, "center_y": .8}
+        MDIconButton:
+            icon: "minus"
+            pos_hint: {"center_x": .45, "center_y": .62}
+            on_press: root.count_minus_one(root.orange_token)
+        MDLabel:
+            text: str(root.orange_token.count)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .5, "center_y": .62}
+        MDIconButton:
+            icon: "plus"
+            pos_hint: {"center_x": .55, "center_y": .62}
+            on_press: root.count_plus_one(root.orange_token)
+    Token:
+        id: green
+        Image:
+            source: 'images/green.png'
+            size: self.texture_size
+            pos_hint: {"center_x": .8, "center_y": .8}
+        MDLabel:
+            text: str(root.green_token.weight)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .8, "center_y": .8}
+        MDIconButton:
+            icon: "minus"
+            pos_hint: {"center_x": .75, "center_y": .62}
+            on_press: root.count_minus_one(root.green_token)
+        MDLabel:
+            text: str(root.green_token.count)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .8, "center_y": .62}
+        MDIconButton:
+            icon: "plus"
+            pos_hint: {"center_x": .85, "center_y": .62}
+            on_press: root.count_plus_one(root.green_token)
+    Token:
+        id: yellow
+        Image:
+            source: 'images/yellow.png'
+            size: self.texture_size
+            pos_hint: {"center_x": .35, "center_y": .4}
+        MDLabel:
+            text: str(root.yellow_token.weight)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .35, "center_y": .4}
+        MDIconButton:
+            icon: "minus"
+            pos_hint: {"center_x": .30, "center_y": .22}
+            on_press: root.count_minus_one(root.yellow_token)
+        MDLabel:
+            text: str(root.yellow_token.count)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .35, "center_y": .22}
+        MDIconButton:
+            icon: "plus"
+            pos_hint: {"center_x": .40, "center_y": .22}
+            on_press: root.count_plus_one(root.yellow_token)
+    Token:
+        id: blue
+        Image:
+            source: 'images/blue.png'
+            size: self.texture_size
+            pos_hint: {"center_x": .65, "center_y": .4}
+        MDLabel:
+            text: str(root.blue_token.weight)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .65, "center_y": .4}
+        MDIconButton:
+            icon: "minus"
+            pos_hint: {"center_x": .60, "center_y": .22}
+            on_press: root.count_minus_one(root.blue_token)
+        MDLabel:
+            text: str(root.blue_token.count)
+            halign: "center"
+            valign: "center"
+            pos_hint: {"center_x": .65, "center_y": .22}
+        MDIconButton:
+            icon: "plus"
+            pos_hint: {"center_x": .70, "center_y": .22}
+            on_press: root.count_plus_one(root.blue_token)
+    MDLabel:
+        id: money
+        halign: "center"
+        valign: "center"
+        pos_hint: {"center_x": .8, "center_y": .1}
+        text: "money: " + str(root.money_sum())
+               
+<Hands>:
+    Image:
+        source: 'images/hands.jpg'
+        size: self.texture_size
+        pos_hint: {"center_x": .5, "center_y": .5}
+
+<TokenSettings>:
+        
+
+
+MDBottomNavigation:
+    MDBottomNavigationItem:
+        text: "main"
+        name: "main_screen"
+        Poker:
+    MDBottomNavigationItem:
+        text: "settings"
+        name: "settings_screen"
+        TokenSettings:
+    MDBottomNavigationItem:
+        text: "show hands"
+        name: "hands_screen"
+        Hands:           
+
+        
+
