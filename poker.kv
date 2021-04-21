@@ -16,7 +16,7 @@
             size: self.texture_size
             pos_hint: {"center_x": .2, "center_y": .8}
         MDLabel:
-            text: str(root.black_token.weight)
+            text: str(root.black_token.value)
             halign: "center"
             valign: "center"
             pos_hint: {"center_x": .2, "center_y": .8}
@@ -40,7 +40,7 @@
             size: self.texture_size
             pos_hint: {"center_x": .5, "center_y": .8}
         MDLabel:
-            text: str(root.orange_token.weight)
+            text: str(root.orange_token.value)
             halign: "center"
             valign: "center"
             pos_hint: {"center_x": .5, "center_y": .8}
@@ -64,7 +64,7 @@
             size: self.texture_size
             pos_hint: {"center_x": .8, "center_y": .8}
         MDLabel:
-            text: str(root.green_token.weight)
+            text: str(root.green_token.value)
             halign: "center"
             valign: "center"
             pos_hint: {"center_x": .8, "center_y": .8}
@@ -88,7 +88,7 @@
             size: self.texture_size
             pos_hint: {"center_x": .35, "center_y": .4}
         MDLabel:
-            text: str(root.yellow_token.weight)
+            text: str(root.yellow_token.value)
             halign: "center"
             valign: "center"
             pos_hint: {"center_x": .35, "center_y": .4}
@@ -112,7 +112,7 @@
             size: self.texture_size
             pos_hint: {"center_x": .65, "center_y": .4}
         MDLabel:
-            text: str(root.blue_token.weight)
+            text: str(root.blue_token.value)
             halign: "center"
             valign: "center"
             pos_hint: {"center_x": .65, "center_y": .4}
@@ -142,15 +142,126 @@
         size: self.texture_size
         pos_hint: {"center_x": .5, "center_y": .5}
 
+
 <TokenSettings>:
+    MDCard:
+        orientation: "vertical"
+        size_hint: .4, .8
+        pos_hint: {"center_x": .5, "center_y": .5}
+        MDFloatLayout:
+            MDLabel:
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .5, "center_y": .90}
+                text: "token values"
+            MDLabel:
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .3, "center_y": .75}
+                text: "black"
+            MDIconButton:
+                icon: "minus"
+                pos_hint: {"center_x": .6, "center_y": .75}
+                on_press: root.decrease_value(0)
+            MDLabel:
+                text: str(root.values[0]/100)
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .7, "center_y": .75}
+            MDIconButton:
+                icon: "plus"
+                pos_hint: {"center_x": .8, "center_y": .75}
+                on_press: root.increase_value(0)
+            MDLabel:
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .3, "center_y": .65}
+                text: "orange"
+            MDIconButton:
+                icon: "minus"
+                pos_hint: {"center_x": .6, "center_y": .65}
+                on_press: root.decrease_value(1)
+            MDLabel:
+                text: str(root.values[1]/100)
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .7, "center_y": .65}
+            MDIconButton:
+                icon: "plus"
+                pos_hint: {"center_x": .8, "center_y": .65}
+                on_press: root.increase_value(1)
+            MDLabel:
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .3, "center_y": .55}
+                text: "green"
+            MDIconButton:
+                icon: "minus"
+                pos_hint: {"center_x": .6, "center_y": .55}
+                on_press: root.decrease_value(2)
+            MDLabel:
+                text: str(root.values[2]/100)
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .7, "center_y": .55}
+            MDIconButton:
+                icon: "plus"
+                pos_hint: {"center_x": .8, "center_y": .55}
+                on_press: root.increase_value(2)
+            MDLabel:
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .3, "center_y": .45}
+                text: "yellow"
+            MDIconButton:
+                icon: "minus"
+                pos_hint: {"center_x": .6, "center_y": .45}
+                on_press: root.decrease_value(3)
+            MDLabel:
+                text: str(root.values[3]/100)
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .7, "center_y": .45}
+            MDIconButton:
+                icon: "plus"
+                pos_hint: {"center_x": .8, "center_y": .45}
+                on_press: root.increase_value(3)
+            MDLabel:
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .3, "center_y": .35}
+                text: "blue"
+            MDIconButton:
+                icon: "minus"
+                pos_hint: {"center_x": .6, "center_y": .35}
+                on_press: root.decrease_value(4)
+            MDLabel:
+                text: str(root.values[4]/100)
+                halign: "center"
+                valign: "center"
+                pos_hint: {"center_x": .7, "center_y": .35}
+            MDIconButton:
+                icon: "plus"
+                pos_hint: {"center_x": .8, "center_y": .35}
+                on_press: root.increase_value(4)
+            MDRectangleFlatButton:
+                text: "reset all"
+                pos_hint: {"center_x": .3, "center_y": .2}
+                on_press: root.values = [0,0,0,0,0]       
+            MDRectangleFlatButton:
+                text: "confirm"
+                pos_hint: {"center_x": .7, "center_y": .2}
+                on_press: app.get_token_values(root.values)
+
         
-
-
 MDBottomNavigation:
+    poker: poker
     MDBottomNavigationItem:
         text: "main"
         name: "main_screen"
+        on_enter: app.set_token_values(root.poker)
         Poker:
+            id: poker
     MDBottomNavigationItem:
         text: "settings"
         name: "settings_screen"
